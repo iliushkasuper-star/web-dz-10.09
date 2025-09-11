@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+class Drob {
+private:
+	int numerator;
+	int denominator;
+public:
+	void Init(int num, int den) {
+		numerator = num;
+		denominator = den;
+
+		
+	}
+	void Print() {
+		cout << numerator << "/" << denominator;
+ }
+
+};
+int main() {
+	Drob drob;
+	drob.Init(45, 5);
+	drob.Print();
