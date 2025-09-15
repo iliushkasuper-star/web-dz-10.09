@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class Shoes
+{
+private:
+	char* model;
+	char* color;
+	int year;
+public:
+	Shoes()
+	{
+		model = nullptr;
+		color = nullptr;
+		year = 0;
+		cout << "Default constructor";
+
+	}
+	Shoes(const char* m, const char* c, int y)
+	{
+		model = new char[strlen(m) + 1];
+		strcpy_s(model, strlen(m) + 1, m);
+
+		color = new char[strlen(c) + 1];
+		strcpy_s(color, strlen(c) + 1, c);
+
+		year = y;
+		cout << "Constructor with parametrs";
+	
+	}
+	void Print()
+	{
+		cout << " Color: " << color << " Model: " << model << "\tyear: " << year << endl;
+	}
+	void Init(const char* m, const char* c, int y)
+	{
+		if (color != nullptr || model != nullptr) {
+			cout << "Destructor ";
+			delete[] color;
+			delete[] model;
+		}
+		model = new char[strlen(m) + 1];
+		strcpy_s(model, strlen(m) + 1, m);
+
+		color = new char[strlen(c) + 1];
+		strcpy_s(color, strlen(c) + 1, c);
+		
+	}
+	~Shoes(){
+		cout << "Destructor ";
+		delete[] color;
+		delete[] model;
+	}
+};
+
+
+int main()
+{
+	Shoes obj1;
+	obj1.Init("Nike", "Black", 14);
+	obj1.Print();
+
+
+}
